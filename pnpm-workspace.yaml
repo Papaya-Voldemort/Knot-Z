@@ -1,0 +1,7 @@
+packages:
+  - "apps/*"
+  - "built-in-apps/*"
+  - "system/*"
+  - "sdk/*"
+  - "services/*"
+  - "tooling/*"

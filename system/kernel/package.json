@@ -1,0 +1,12 @@
+{
+  "name": "@webos/kernel",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": { ".": "./src/index.ts" },
+  "dependencies": {
+    "@webos/filesystem": "workspace:*",
+    "@webos/settings": "workspace:*",
+    "@webos/types": "workspace:*"
+  }
+}

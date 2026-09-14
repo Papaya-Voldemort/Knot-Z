@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "skipLibCheck": true,
+    "verbatimModuleSyntax": true,
+    "noEmit": true
+  },
+  "include": [
+    "apps/**/*.ts",
+    "built-in-apps/**/*.ts",
+    "system/**/*.ts",
+    "sdk/**/*.ts",
+    "services/**/*.ts",
+    "tooling/**/*.ts"
+  ]
+}

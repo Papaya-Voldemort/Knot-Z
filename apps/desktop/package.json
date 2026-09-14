@@ -1,0 +1,12 @@
+{
+  "name": "@webos/desktop",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": { ".": "./src/index.ts" },
+  "dependencies": {
+    "@webos/app-api": "workspace:*",
+    "@webos/kernel": "workspace:*",
+    "@webos/shell": "workspace:*"
+  }
+}

@@ -1,0 +1,115 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    devDependencies:
+      typescript:
+        specifier: ^5.9.2
+        version: 5.9.3
+
+  apps/desktop:
+    dependencies:
+      '@webos/app-api':
+        specifier: workspace:*
+        version: link:../../sdk/app-api
+      '@webos/kernel':
+        specifier: workspace:*
+        version: link:../../system/kernel
+      '@webos/shell':
+        specifier: workspace:*
+        version: link:../../system/shell
+
+  built-in-apps/files:
+    dependencies:
+      '@webos/app-api':
+        specifier: workspace:*
+        version: link:../../sdk/app-api
+
+  built-in-apps/settings:
+    dependencies:
+      '@webos/app-api':
+        specifier: workspace:*
+        version: link:../../sdk/app-api
+
+  built-in-apps/store:
+    dependencies:
+      '@webos/app-api':
+        specifier: workspace:*
+        version: link:../../sdk/app-api
+
+  built-in-apps/terminal:
+    dependencies:
+      '@webos/app-api':
+        specifier: workspace:*
+        version: link:../../sdk/app-api
+
+  sdk/app-api:
+    dependencies:
+      '@webos/types':
+        specifier: workspace:*
+        version: link:../types
+
+  sdk/types: {}
+
+  sdk/ui: {}
+
+  services/accounts: {}
+
+  services/registry: {}
+
+  services/sync: {}
+
+  system/filesystem:
+    dependencies:
+      '@webos/types':
+        specifier: workspace:*
+        version: link:../../sdk/types
+
+  system/kernel:
+    dependencies:
+      '@webos/filesystem':
+        specifier: workspace:*
+        version: link:../filesystem
+      '@webos/settings':
+        specifier: workspace:*
+        version: link:../settings
+      '@webos/types':
+        specifier: workspace:*
+        version: link:../../sdk/types
+
+  system/package-manager:
+    dependencies:
+      '@webos/types':
+        specifier: workspace:*
+        version: link:../../sdk/types
+
+  system/settings: {}
+
+  system/shell:
+    dependencies:
+      '@webos/kernel':
+        specifier: workspace:*
+        version: link:../kernel
+      '@webos/ui':
+        specifier: workspace:*
+        version: link:../../sdk/ui
+
+  tooling/build: {}
+
+  tooling/scripts: {}
+
+packages:
+
+  typescript@5.9.3:
+    resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+
+snapshots:
+
+  typescript@5.9.3: {}

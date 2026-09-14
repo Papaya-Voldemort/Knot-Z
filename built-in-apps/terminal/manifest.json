@@ -1,0 +1,7 @@
+{
+  "id": "com.webos.terminal",
+  "name": "Terminal",
+  "version": "0.0.0",
+  "entry": "./src/index.ts",
+  "permissions": []
+}

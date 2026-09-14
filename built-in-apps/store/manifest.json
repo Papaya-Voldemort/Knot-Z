@@ -1,0 +1,7 @@
+{
+  "id": "com.webos.store",
+  "name": "App Store",
+  "version": "0.0.0",
+  "entry": "./src/index.ts",
+  "permissions": []
+}
