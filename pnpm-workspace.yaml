@@ -5,3 +5,5 @@ packages:
   - "sdk/*"
   - "services/*"
   - "tooling/*"
+onlyBuiltDependencies:
+  - esbuild
