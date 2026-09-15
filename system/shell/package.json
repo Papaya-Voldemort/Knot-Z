@@ -3,6 +3,13 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "exports": { ".": "./src/index.ts" },
-  "dependencies": { "@webos/kernel": "workspace:*", "@webos/ui": "workspace:*" }
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@webos/kernel": "workspace:*",
+    "@webos/ui": "workspace:*",
+    "mri": "^1.2.0",
+    "shell-quote": "^1.10.0"
+  }
 }

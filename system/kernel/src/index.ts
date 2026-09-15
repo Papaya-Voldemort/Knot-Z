@@ -1,2 +1,2 @@
-/** Coordinates application lifecycle, permissions, IPC, and system services. */
+/* Coordinates application lifecycle, permissions, IPC, and system services. */
 export {};
