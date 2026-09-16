@@ -1,12 +1,76 @@
 <script lang="ts">
-    let input = $state('');
-    let history = $state(['Welcome to Knot-Z Terminal v0.1.0']);
+    import { ShellSession } from "@webos/app-api";
 
-    function handleKeydown(e: KeyboardEvent) {
-      if (e.key === 'Enter' && input.trim()) {
-        history = [...history, `$ ${input}`];
-        input = '';
-      }
+    let input = $state("");
+    let history = $state<string[]>(["Welcome to Knot-Z Terminal v0.1.0"]);
+    let fullHistory = $state<string[]>([]);
+    let commandHistory = $state<string[]>([]);
+    let historyIndex = $state(-1);
+    let isExecuting = $state(false);
+
+    function addHistory(item: string) {
+        history.push(item);
+        fullHistory.push(item);
+    }
+
+    const session = new ShellSession({
+        cwd: "/home/user", // temp: update with actual starting path when file system is made
+        stdout: (line) => {
+            if (line === "!!>CLEAR>!!") {
+                history = [];
+            } else {
+                addHistory(line);
+            }
+        },
+        stderr: (err) => {
+            addHistory(err);
+        },
+    });
+
+    async function handleKeydown(e: KeyboardEvent) {
+        if (e.key === "Enter" && input.trim()) {
+            const commandLine = input.trim();
+
+            commandHistory.push(commandLine);
+            historyIndex = -1;
+
+            addHistory(`$ ${session.context.cwd} $ ${commandLine}`);
+
+            input = "";
+            isExecuting = true;
+
+            try {
+                await session.execute(commandLine);
+            } finally {
+                isExecuting = false;
+            }
+        } else if (e.key === "ArrowUp") {
+            e.preventDefault();
+
+            if (commandHistory.length === 0) return;
+
+            if (historyIndex === -1) {
+                historyIndex = commandHistory.length - 1;
+            } else if (historyIndex > 0) {
+                historyIndex--;
+            }
+
+            input = commandHistory[historyIndex];
+        } else if (e.key === "ArrowDown") {
+            e.preventDefault();
+
+            if (commandHistory.length === 0 || historyIndex === -1) return;
+
+            if (historyIndex < commandHistory.length - 1) {
+                historyIndex++;
+                input = commandHistory[historyIndex];
+            } else {
+                historyIndex = -1;
+                input = "";
+            }
+
+            input = commandHistory[historyIndex];
+        }
     }
 </script>
 
@@ -20,15 +84,14 @@
     <div class="prompt-row">
         <span class="prompt">&gt;</span>
         <input
-              type="text"
-              bind:value={input}
-              onkeydown={handleKeydown}
-              placeholder="Type a command..."
-              autofocus
-            />
+            type="text"
+            bind:value={input}
+            onkeydown={handleKeydown}
+            placeholder="Type a command..."
+            autofocus
+        />
     </div>
 </main>
-
 
 <style>
     :global(html, body) {
@@ -43,7 +106,7 @@
         width: 100%;
         height: 100%;
     }
-    
+
     .terminal-container {
         box-sizing: border-box;
         background-color: rgba(18, 18, 18, 0.2);

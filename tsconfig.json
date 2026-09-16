@@ -6,14 +6,20 @@
     "strict": true,
     "skipLibCheck": true,
     "verbatimModuleSyntax": true,
-    "noEmit": true
+    "noEmit": true,
+    "paths": {
+      "@webos/app-api": ["./sdk/app-api/src/index.ts"],
+      "@webos/types": ["./sdk/types/src/index.ts"],
+    },
   },
   "include": [
     "apps/**/*.ts",
+    "apps/**/*.svelte",
     "built-in-apps/**/*.ts",
+    "built-in-apps/**/*.svelte",
     "system/**/*.ts",
     "sdk/**/*.ts",
     "services/**/*.ts",
-    "tooling/**/*.ts"
-  ]
+    "tooling/**/*.ts",
+  ],
 }

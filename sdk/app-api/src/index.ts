@@ -1,4 +1,5 @@
 import type { FilesystemApi, InstalledApplication } from "@webos/types";
+export { ShellSession } from "../../../system/shell/src";
 
 export interface WebOSApi {
   fs: FilesystemApi;
@@ -13,3 +14,4 @@ export interface WebOSApi {
     request(permission: string): Promise<boolean>;
   };
 }
+
